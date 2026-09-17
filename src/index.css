@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+
+  body {
+    background-color: #f8fafc;
+    color: #0f172a;
+    overflow-x: hidden;
+    letter-spacing: -0.015em;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: #003873;
+    color: #ffffff;
+  }
+}
+
+/* High-Performance 60FPS Static Aurora Background Mesh (Zero GPU Blur Lag) */
+.bg-ambient-aurora {
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(ellipse at 15% 10%, rgba(56, 189, 248, 0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 12%, rgba(99, 102, 241, 0.10) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 40%, rgba(0, 56, 115, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 70%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 85%, rgba(14, 165, 233, 0.09) 0%, transparent 50%);
+  background-attachment: scroll;
+}
+
+.bg-tech-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 56, 115, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 56, 115, 0.03) 1px, transparent 1px);
+}
+
+/* High-Performance Hardware-Accelerated Glassmorphism (Silky Smooth Scrolling) */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    0 4px 20px -2px rgba(0, 56, 115, 0.06),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  transform: translateZ(0);
+}
+
+.glass-card-elevated {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 12px 35px -8px rgba(0, 56, 115, 0.10),
+    0 2px 8px -1px rgba(0, 0, 0, 0.04),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  transform: translateZ(0);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 10px rgba(0, 56, 115, 0.05);
+  border-radius: 12px;
+}
+
+.glass-window {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 20px 45px -10px rgba(0, 56, 115, 0.12),
+    0 6px 18px -4px rgba(0, 56, 115, 0.06),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  transform: translateZ(0);
+}
+
+.glass-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.glass-hover:hover {
+  transform: translateY(-3px) translateZ(0);
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(0, 56, 115, 0.2);
+  box-shadow: 
+    0 16px 36px -8px rgba(0, 56, 115, 0.14),
+    0 4px 12px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* Audio Wave Visualizer */
+@keyframes audioWave {
+  0%, 100% { height: 4px; }
+  50% { height: 18px; }
+}
+
+.animate-audio-1 { animation: audioWave 0.7s ease-in-out infinite 0.1s; }
+.animate-audio-2 { animation: audioWave 0.7s ease-in-out infinite 0.25s; }
+.animate-audio-3 { animation: audioWave 0.7s ease-in-out infinite 0.4s; }
+.animate-audio-4 { animation: audioWave 0.7s ease-in-out infinite 0.15s; }
+
+/* Modern Range Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #003873;
+  border: 3px solid #ffffff;
+  box-shadow: 0 3px 8px rgba(0, 56, 115, 0.3);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+
+/* Clean Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Studio Container Inner Scrollbar (Smooth Apple-Grade) */
+.container-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 56, 115, 0.28) rgba(241, 245, 249, 0.7);
+  -webkit-overflow-scrolling: touch;
+}
+.container-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.container-scrollbar::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.7);
+  border-radius: 9999px;
+  margin: 8px 0;
+}
+.container-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 56, 115, 0.28);
+  border-radius: 9999px;
+}
+.container-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 56, 115, 0.5);
+}
+
+/* Hide scrollbar while preserving smooth scroll */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
