@@ -263,24 +263,36 @@ export const InteractiveCommandCenter: React.FC<CommandCenterProps> = ({
   };
 
   return (
-    <section id="queues" className="py-24 relative">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-8 lg:px-12">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg glass-card text-xs font-bold text-[#003873] uppercase tracking-wider mb-3">
-            <Sparkles size={12} />
-            <span>Operational Command Center</span>
+    <section id="queues" className="py-24 relative overflow-hidden">
+      <div className="max-w-[1780px] 2xl:max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
+        {/* Section Header with Scroll Sliding Animation */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mb-12"
+        >
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50/90 border border-blue-200/80 text-[11px] font-bold text-[#1C72B9] uppercase tracking-wider mb-3 shadow-2xs">
+            <Sparkles size={12} className="text-[#FA8A35]" />
+            <span>OPERATIONAL COMMAND CENTER</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#0f172a]">
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#0f172a] leading-tight">
             Six dedicated workqueues. Zero lost opportunities.
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 mt-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
             Switch between incoming leads, scheduled calls, demo sessions, tuition debt collection, and financial audits with continuous scroll preservation.
           </p>
-        </div>
+        </motion.div>
 
         {/* Glassmorphic Segmented Control with Liquid Indicator */}
-        <div className="flex items-center gap-1.5 overflow-x-auto p-2 glass-card rounded-2xl mb-8 border border-white/90 shadow-sm">
+        <motion.div 
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-center gap-1.5 overflow-x-auto p-1.5 ibraine-card rounded-2xl mb-8 border border-slate-200/80 shadow-xs"
+        >
           {queues.map((q, idx) => {
             const isSelected = activeQueue === idx;
             return (
@@ -288,13 +300,13 @@ export const InteractiveCommandCenter: React.FC<CommandCenterProps> = ({
                 key={q.id}
                 onClick={() => setActiveQueue(idx)}
                 className={`relative px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 transition-colors whitespace-nowrap cursor-pointer z-10 ${
-                  isSelected ? 'text-[#003873]' : 'text-slate-500 hover:text-slate-900'
+                  isSelected ? 'text-[#1C72B9]' : 'text-slate-500 hover:text-slate-900'
                 }`}
               >
                 {isSelected && (
                   <motion.div
                     layoutId="activeQueuePill"
-                    className="absolute inset-0 bg-white rounded-xl shadow-sm border border-slate-200/80 -z-10"
+                    className="absolute inset-0 bg-white rounded-xl shadow-xs border border-slate-200/90 -z-10"
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}
@@ -303,14 +315,20 @@ export const InteractiveCommandCenter: React.FC<CommandCenterProps> = ({
               </button>
             );
           })}
-        </div>
+        </motion.div>
 
-        {/* Master Glassmorphic Workspace Frame with Rounded-2xl */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start glass-card-elevated rounded-2xl p-6 sm:p-10 border border-white/95 shadow-xl">
+        {/* Master Glassmorphic Workspace Frame with Rounded-2xl & Scroll Animation */}
+        <motion.div 
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start ibraine-card rounded-2xl p-6 sm:p-8 lg:p-10"
+        >
           {/* Animated Screenshot Glass Frame */}
           <div className="lg:col-span-7 space-y-3">
-            <div className="glass-window p-2.5 sm:p-3.5 border border-white/95 rounded-2xl">
-              <div className="relative rounded-xl overflow-hidden bg-white min-h-[300px] flex items-center justify-center border border-slate-200/70 shadow-inner">
+            <div className="p-2 sm:p-3 bg-slate-50/80 border border-slate-200/80 rounded-2xl shadow-inner">
+              <div className="relative rounded-xl overflow-hidden bg-white min-h-[300px] flex items-center justify-center border border-slate-200/70 shadow-sm">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={current.id}
@@ -326,30 +344,33 @@ export const InteractiveCommandCenter: React.FC<CommandCenterProps> = ({
 
                 <button
                   onClick={() => onOpenGallery(current.id)}
-                  className="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg glass-card text-[#0f172a] text-xs font-semibold flex items-center gap-1.5 shadow-md transition-all cursor-pointer hover:bg-white"
+                  className="absolute bottom-3 right-3 px-3 py-1.5 rounded-lg bg-white/95 backdrop-blur-md text-[#0f172a] text-xs font-semibold flex items-center gap-1.5 shadow-md border border-slate-200/80 transition-all cursor-pointer hover:bg-white"
                 >
-                  <Maximize2 size={12} className="text-[#003873]" />
+                  <Maximize2 size={12} className="text-[#1C72B9]" />
                   <span>Inspect High-Res</span>
                 </button>
               </div>
             </div>
 
             <div className="flex items-center justify-between text-xs text-slate-500 px-1 font-medium">
-              <span>ibraine CRM • Production Interface</span>
-              <span className="text-[#003873] font-bold">{current.badge}</span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>ibraine CRM • Operations Command Center</span>
+              </span>
+              <span className="text-[#1C72B9] font-bold bg-blue-50 px-2 py-0.5 rounded border border-blue-200/60">{current.badge}</span>
             </div>
           </div>
 
           {/* Option-by-Option Breakdown */}
           <div className="lg:col-span-5 space-y-5">
             <div>
-              <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-[#003873] bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-200/80 mb-2 shadow-xs">
+              <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-[#1C72B9] bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-200/80 mb-2 shadow-2xs">
                 {current.badge}
               </span>
               <h3 className="text-xl sm:text-2xl font-bold text-[#0f172a] tracking-tight">
                 {current.title}
               </h3>
-              <p className="text-sm text-slate-600 leading-relaxed mt-2">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2">
                 {current.summary}
               </p>
             </div>
@@ -357,28 +378,28 @@ export const InteractiveCommandCenter: React.FC<CommandCenterProps> = ({
             {/* Interactive Simulation Action Button */}
             <button
               onClick={handleSimulateAction}
-              className="w-full py-2.5 px-4 rounded-xl bg-white/90 hover:bg-white border border-[#003873]/30 hover:border-[#003873] text-[#003873] text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer active:scale-98"
+              className="w-full py-2.5 px-4 rounded-xl bg-white hover:bg-slate-50 border border-[#1C72B9]/40 hover:border-[#1C72B9] text-[#1C72B9] text-xs font-bold flex items-center justify-center gap-2 transition-all shadow-2xs cursor-pointer active:scale-98"
             >
-              <Play size={12} className="fill-[#003873]" />
+              <Play size={12} className="fill-[#1C72B9]" />
               <span>{current.actionLabel}</span>
             </button>
 
-            {/* Granular Option Breakdown in Glass Cards */}
+            {/* Granular Option Breakdown in Cards */}
             <div className="space-y-2 pt-2 border-t border-slate-200/80">
-              <p className="text-xs font-bold uppercase tracking-wider text-[#0f172a] mb-3">
+              <p className="text-xs font-bold uppercase tracking-wider text-[#0f172a] mb-2.5">
                 Key Controls on This Screen
               </p>
               {current.options.map((opt, oIdx) => (
                 <div
                   key={oIdx}
-                  className="p-3.5 glass-card rounded-xl border border-white/90 shadow-xs hover:border-blue-300/80 transition-all"
+                  className="p-3 bg-slate-50/70 hover:bg-white rounded-xl border border-slate-200/70 hover:border-blue-200 shadow-2xs transition-all"
                 >
                   <div className="flex items-center justify-between gap-2 mb-1">
                     <span className="font-bold text-xs text-[#0f172a] flex items-center gap-1.5">
-                      <CheckCircle2 size={13} className="text-[#003873]" />
+                      <CheckCircle2 size={13} className="text-[#1C72B9]" />
                       {opt.name}
                     </span>
-                    <span className="text-[10px] font-semibold text-slate-500 bg-slate-100/80 px-2 py-0.5 rounded-md">
+                    <span className="text-[10px] font-semibold text-slate-500 bg-white px-2 py-0.5 rounded-md border border-slate-200/60">
                       {opt.type}
                     </span>
                   </div>
@@ -394,13 +415,13 @@ export const InteractiveCommandCenter: React.FC<CommandCenterProps> = ({
 
             <button
               onClick={() => onOpenGallery(current.id)}
-              className="w-full py-2.5 rounded-xl font-bold text-xs text-white bg-[#003873] hover:bg-[#002852] flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-md shadow-[#003873]/20"
+              className="w-full py-3 rounded-xl font-bold text-xs text-white bg-[#0f172a] hover:bg-black flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-md shadow-black/10 active:scale-98"
             >
               <span>Inspect full screen specifications</span>
               <ChevronRight size={14} />
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

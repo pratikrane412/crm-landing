@@ -56,7 +56,7 @@ export function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-ambient-aurora bg-tech-grid text-[#0f172a] flex flex-col selection:bg-[#003873] selection:text-white">
+    <div className="relative min-h-screen bg-ibraine-canvas bg-ibraine-grid text-[#0f172a] flex flex-col selection:bg-[#1C72B9] selection:text-white">
       {/* Dynamic Floating Toast */}
       <Toast toast={toast} onDismiss={() => setToast(null)} />
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import {
   CreditCard,
   Layers,
@@ -43,21 +44,27 @@ export const FeatureBento: React.FC<FeatureBentoProps> = ({
   };
 
   return (
-    <section id="features" className="py-24 relative">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-8 lg:px-12">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg glass-card text-xs font-bold text-[#003873] uppercase tracking-wider mb-3">
-            <Sparkles size={12} />
-            <span>Engineered Capabilities</span>
+    <section id="features" className="py-24 relative overflow-hidden">
+      <div className="max-w-[1780px] 2xl:max-w-[1880px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
+        {/* Section Header with Scroll Sliding Animation */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl mb-16"
+        >
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50/90 border border-blue-200/80 text-[11px] font-bold text-[#1C72B9] uppercase tracking-wider mb-3 shadow-2xs">
+            <Sparkles size={12} className="text-[#FA8A35]" />
+            <span>ENGINEERED CAPABILITIES</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#0f172a]">
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#0f172a] leading-tight">
             Every tool an institution needs. Built into the core.
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 mt-3 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
             Eliminate fragmented third-party plugins. ibraine CRM integrates admissions, fees, batch scheduling, and credentials natively.
           </p>
-        </div>
+        </motion.div>
 
         {/* Glassmorphic Bento Grid - Rounded-2xl */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
